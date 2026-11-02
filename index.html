@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iremide Isaac-Oloye | Cloud Engineer</title>
+  <style>
+    :root {
+      --bg-color: #0b0f19;
+      --card-bg: rgba(22, 31, 48, 0.7);
+      --border-color: #1e293b;
+      --accent-color: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container { max-width: 950px; margin: 0 auto; }
+
+    header {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+      color: var(--text-main);
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .highlight { color: var(--accent-color); }
+
+    p.subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-link {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background: rgba(30, 41, 59, 0.5);
+      transition: all 0.2s ease;
+    }
+
+    .btn-link:hover {
+      background: var(--accent-glow);
+      border-color: var(--accent-color);
+      transform: translateY(-2px);
+    }
+
+    .tab-nav {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5rem;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 0.6rem 1.2rem;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.active, .tab-btn:hover {
+      color: var(--accent-color);
+      background: var(--accent-glow);
+    }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    section {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      color: var(--text-main);
+      font-size: 1.4rem;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: var(--accent-color);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px -5px var(--accent-glow);
+    }
+
+    .card h3 {
+      color: var(--accent-color);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    .tag {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-color);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    .cert-list p {
+      color: var(--text-main);
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .cert-list p::before {
+      content: "✓";
+      color: var(--accent-color);
+    }
+
+    ul { list-style: none; }
+    li {
+      margin-bottom: 0.75rem;
+      position: relative;
+      padding-left: 1.4rem;
+      color: var(--text-muted);
+    }
+    li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--accent-color);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-category h4 {
+      color: var(--accent-color);
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    .skill-pill {
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Iremide <span class="highlight">Isaac-Oloye</span></h1>
+      <p class="subtitle">Cloud Engineer | Multi-Cloud Infrastructure & Automation</p>
+      <div class="contact-links">
+        <a href="https://linkedin.com/in/iremide-isaac-oloye" target="_blank" class="btn-link">LinkedIn ↗</a>
+        <a href="https://github.com/Iremide007" target="_blank" class="btn-link">GitHub ↗</a>
+        <a href="mailto:iremidealoye@gmail.com" class="btn-link">Email</a>
+      </div>
+    </header>
+
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('overview')">Overview</button>
+      <button class="tab-btn" onclick="switchTab('projects')">Projects</button>
+      <button class="tab-btn" onclick="switchTab('skills')">Skills Matrix</button>
+    </div>
+
+    <!-- OVERVIEW TAB -->
+    <div id="overview" class="tab-content active">
+      <section>
+        <h2>Certifications (2026)</h2>
+        <div class="grid">
+          <div class="card cert-list">
+            <h3>Google Cloud Platform</h3>
+            <p>Professional Cloud Architect</p>
+            <p>Associate Cloud Engineer</p>
+            <p>Associate Google Workspace Administrator</p>
+          </div>
+          <div class="card cert-list">
+            <h3>Oracle Cloud Infrastructure</h3>
+            <p>OCI Architect Associate</p>
+            <p>OCI Certified Foundations</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Professional Experience</h2>
+        <h3>Cloud & IT Solutions Specialist | Dulano Naturals LTD (2023–Present)</h3>
+        <br>
+        <ul>
+          <li>Designed and deployed multi-cloud infrastructure across GCP and OCI to support business applications.</li>
+          <li>Automated administrative workflows and operational task scripts with Python, reducing manual effort by 35%.</li>
+          <li>Configured custom VPC networks, IAM security policies, and proactive cloud monitoring.</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- PROJECTS TAB -->
+    <div id="projects" class="tab-content">
+      <section>
+        <h2>Featured Projects</h2>
+        <div class="grid">
+          <a href="https://github.com/Iremide007/multi-cloud-network-automation" target="_blank" class="card">
+            <div>
+              <h3>Multi-Cloud Network Deployment <span>↗</span></h3>
+              <p>Infrastructure-as-code automation deploying isolated VPC networks across GCP and OCI using Terraform and Python health automation.</p>
+            </div>
+            <div class="tags">
+              <span class="tag">GCP</span>
+              <span class="tag">OCI</span>
+              <span class="tag">Terraform</span>
+              <span class="tag">Python</span>
+            </div>
+          </a>
+
+          <a href="https://github.com/Iremide007/gcp-cloud-cost-optimizer" target="_blank" class="card">
+            <div>
+              <h3>Serverless GCP Cost Optimizer <span>↗</span></h3>
+              <p>Automated cloud governance script auditing unattached persistent storage disks and triggering scheduled backups to cut cloud waste.</p>
+            </div>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">GCP SDK</span>
+              <span class="tag">Cloud Run</span>
+            </div>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <!-- SKILLS MATRIX TAB -->
+    <div id="skills" class="tab-content">
+      <section>
+        <h2>Technical Stack</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h4>Cloud Platforms</h4>
+            <div class="skill-pills">
+              <span class="skill-pill">GCP</span>
+              <span class="skill-pill">OCI</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h4>IaC & Automation</h4>
+            <div class="skill-pills">
+              <span class="skill-pill">Terraform</span>
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">Bash</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h4>Networking & Security</h4>
+            <div class="skill-pills">
+              <span class="skill-pill">VPC / VCN</span>
+              <span class="skill-pill">IAM</span>
+              <span class="skill-pill">DNS & Firewalls</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h4>Developer Tools</h4>
+            <div class="skill-pills">
+              <span class="skill-pill">Git / GitHub</span>
+              <span class="skill-pill">VS Code</span>
+              <span class="skill-pill">Linux</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>
